@@ -1,0 +1,42 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:16586",
+      "sslPort": 44373
+    }
+  },
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "http://localhost:5266",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionSQL": "Server=MSSQLSERVER01;Database=BdiExamen;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;",
+        "WsApiExamen": "http://localhost:5286/"
+      }
+    },
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:7142;http://localhost:5266",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionSQL": "Server=MSSQLSERVER01;Database=BdiExamen;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;"
+
+      }
+    }
+  }
+}

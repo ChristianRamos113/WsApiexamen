@@ -1,0 +1,121 @@
+﻿@using Examen.Models
+@model List<Entidades.DatosBD>
+
+<h2>Gestion de Exámenes</h2>
+<form method="post">
+    <label>IdExamen:</label>
+    <input type="text" name="Id" />
+    <label>Nombre:</label>
+    <input type="text" name="Nombre" />
+    <label>Descripción:</label>
+    <input type="text" name="Descripcion" />
+
+    <input type="checkbox" id="usarAPI" name="usarAPI" value="true" />
+    <label>Usar API</label>
+
+    <button type="submit" class="btn-verde" formaction="@Url.Action("Agregar", "Examen")">Agregar</button>
+    <button type="submit" class="btn-verde" formaction="@Url.Action("Actualizar", "Examen")">Actualizar</button>
+    <button type="submit" class="btn-Rojo" formaction="@Url.Action("Eliminar", "Examen")">Eliminar</button>
+</form>
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="mensaje">@ViewBag.Mensaje</div>
+}
+
+<h2>Lista de Exámenes</h2>
+
+<table class="table-examenes">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            for (int i = 0; i < Model.Count; i++)
+            {
+                var examen = Model[i];
+
+                <tr class="@(i % 2 == 0 ? "fila-par" : "fila-impar")">
+                    <td>@examen.IdExamen</td>
+                    <td>@examen.Nombre</td>
+                    <td>@examen.Descripcion</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">
+                    No existen registros.
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .table-examenes {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+        .table-examenes th,
+        .table-examenes td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .table-examenes th {
+            background-color: #343a40;
+            color: white;
+        }
+
+    .fila-par {
+        background-color: #f2f2f2;
+    }
+
+    .fila-impar {
+        background-color: #ffffff;
+    }
+
+    .table-examenes tr:hover {
+        background-color: #e9ecef;
+    }
+
+    .btn-verde {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-rojo {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .mensaje {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 12px 18px;
+        border-radius: 6px;
+        border: 1px solid #b8daff;
+        background-color: #e9f5ff;
+        color: #0c5460;
+        font-weight: 500;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    }
+</style>
